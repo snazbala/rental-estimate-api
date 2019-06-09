@@ -12,11 +12,13 @@ const requiredNumber = {
 
 const PropertiesSchema = new mongoose.Schema({
   emailAddress: requiredString,
-  address1: requiredString,
-  address2: String,
-  city: requiredString,
-  state: requiredString,
-  zipCode: requiredString,
+  address: {
+    address1: requiredString,
+    address2: String,
+    city: requiredString,
+    state: requiredString,
+    zipCode: requiredString,
+  },
   numBedrooms: requiredNumber,
   numBathrooms: requiredNumber,
   sqFt: requiredNumber,
