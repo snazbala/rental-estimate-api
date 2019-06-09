@@ -40,6 +40,13 @@ functions: # add 4 functions for CRUD
           path: properties
           method: get
           cors: true
+  getAllOffers:
+    handler: handler.getAllOffers
+    events:
+      - http:
+          path: offers
+          method: get
+          cors: true
   update:
     handler: handler.update # path will be domain.name.com/dev/properties/1
     events:

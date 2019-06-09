@@ -27,5 +27,6 @@ const PropertiesSchema = new mongoose.Schema({
     renterRent: Number,
     airbnbIncome: [Number],
   },
+  offer: Number,
 });
 module.exports = mongoose.model('Property', PropertiesSchema);
