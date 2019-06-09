@@ -30,12 +30,7 @@ const getOffer = (estimate) => {
 
     const potentialProfit = totalAnnualIncome - annualFullHomeRent;
 
-    // Since `estimate` is hard coded for now, let's use a randomizer to
-    // make this more interesting and sometimes return false so we can see
-    // the negative case in the UI.
-    const randomizer = Math.floor(Math.random() * Math.floor(2));
-
-    if (potentialProfit > 4000 && randomizer) {
+    if (potentialProfit > 4000) {
         const averageMonthlyAirbnbIncome = annualAirbnbIncome / 12;
         const offer = fullHomeRent + (averageMonthlyAirbnbIncome * .10);
 

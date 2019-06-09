@@ -6,3 +6,5 @@ jspm_packages
 .serverless
 
 variables.env
+yarn-debug.log*
+yarn-error.log*
