@@ -34,16 +34,30 @@ module.exports.create = (event, context, callback) => {
           statusCode: 200,
           body: JSON.stringify(property),
           headers: {
-            ...headers,
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true,
             'Access-Control-Allow-Methods': 'POST',
           },
         }))
         .catch((err) => callback(null, {
           statusCode: err.statusCode || 500,
-          body: 'Could not create the property.',
+          body: JSON.stringify(err),
           headers: { 'Content-Type': 'text/plain' }
         }));
         // TODO: Handle argument errors (400) for missing fields
+    });
+};
+
+module.exports.options = (event, context, callback) => {
+    callback(null, {
+      statusCode: 200,
+      body: JSON.stringify(event.body),
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+        'Access-Control-Allow-Methods': 'POST',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type, Accept, Authorization, User-Agent, Referer',
+      },
     });
 };
 

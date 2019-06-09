@@ -2,7 +2,7 @@ service: rental-estimate-api
 
 provider:
   name: aws
-  runtime: nodejs10.x # set node.js runtime
+  runtime: nodejs8.10 # set node.js runtime
   memorySize: 128 # set the maximum memory of the Lambdas in Megabytes
   timeout: 10 # the timeout is 10 seconds (default is 6 seconds)
   stage: dev # setting the env stage to dev, this will be visible in the routes
@@ -15,6 +15,13 @@ functions: # add 4 functions for CRUD
       - http:
           path: properties # path will be domain.name.com/dev/properties
           method: post
+          cors: true
+  options:
+    handler: handler.options
+    events:
+      - http:
+          path: properties # path will be domain.name.com/dev/properties
+          method: options
           cors: true
   getOne:
     handler: handler.getOne
@@ -47,3 +54,7 @@ functions: # add 4 functions for CRUD
 
 plugins:
   - serverless-offline # adding the plugin to be able to run the offline emulation
+
+resources:
+  # API Gateway Errors
+  - ${file(resources/api-gateway-errors.yml)}
